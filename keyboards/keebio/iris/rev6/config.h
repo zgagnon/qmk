@@ -78,7 +78,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define RGBLIGHT_EFFECT_ALTERNATING
 #    define RGBLIGHT_EFFECT_TWINKLE
 #    define RGBLIGHT_DEFAULT_VAL 120
-#    define RGBLIGHT_DEFAULT_MODE (RGBLIGHT_MODE_RAINBOW_SWIRL + 2)
+#    define RGBLIGHT_DEFAULT_MODE (RGB_MODE_SWIRL  + 2)
 // RGB Matrix
 #    ifdef RGB_MATRIX_ENABLE
 #        define ENABLE_RGB_MATRIX_ALPHAS_MODS
@@ -118,10 +118,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #        define ENABLE_RGB_MATRIX_MULTISPLASH
 #        define ENABLE_RGB_MATRIX_SOLID_SPLASH
 #        define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
+#        define RGB_MATRIX_KEYPRESSE
 #        define RGB_MATRIX_MAXIMUM_BRIGHTNESS 160
 #        define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
 #        define DRIVER_LED_TOTAL RGBLED_NUM
 #        define RGB_MATRIX_SPLIT { 34, 34 }
+#        define RGB_MATRIX_SPLIT_TRANSPORT_MIRROR
 #        define RGB_DISABLE_WHEN_USB_SUSPENDED
 #        define RGB_MATRIX_KEYPRESSES
 #    endif
