@@ -122,12 +122,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
+static int32_t key_indicator = 1;
+
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
         if (clockwise) {
-            tap_code(KC_VOLU);
+            ++key_indicator;
+            if (key_indicator == 6) {
+                key_indicator = 34;
+            }
         } else {
-            tap_code(KC_VOLD);
+            --key_indicator;
+            if (key_indicator == 33) {
+                key_indicator = 5;
+            } else if (key_indicator < 1) {
+                key_indicator = 1;
+            }
         }
     }
     else if (index == 1) {
@@ -141,3 +151,14 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 }
 
 
+void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+    for (uint8_t i = led_min; i <= led_max; i++) {
+        if ((i > 0 && i < 6) || (i >33 && i < 40)) {
+            if (i <= key_indicator) {
+                rgb_matrix_set_color(i, RGB_YELLOW);
+            } else {
+                rgb_matrix_set_color(i, RGB_BLUE);
+            }
+        }
+    }
+}

@@ -69,8 +69,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define RGBLIGHT_LIMIT_VAL 120 /* The maximum brightness level */
 #    define RGBLIGHT_SLEEP         /* If defined, the RGB lighting will be switched off when the host goes to sleep */
 /*== enabled animations ==*/
-#    define ENABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS
-#    define RGBLIGHT_DEFAULT_VAL 120 
+// #    define ENABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS
+// #    define ENABLE_RGB_MATRIX_RAINBOW_PINWHEELS
+// #    define ENABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT
+
+#    define RGBLIGHT_DEFAULT_VAL 120
 // RGB Matrix
 #    ifdef RGB_MATRIX_ENABLE
 #        define RGB_MATRIX_MAXIMUM_BRIGHTNESS 160
