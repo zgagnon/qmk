@@ -68,8 +68,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define RGBLIGHT_VAL_STEP 8
 #    define RGBLIGHT_LIMIT_VAL 120 /* The maximum brightness level */
 #    define RGBLIGHT_SLEEP         /* If defined, the RGB lighting will be switched off when the host goes to sleep */
+#    define RGB_MATRIX_FRAMEBUFFER_EFFECTS
+#    define RGB_MATRIX_TYPING_HEATMAP_DECREASE_DELAY_MS 50
 /*== enabled animations ==*/
-// #    define ENABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS
+#   define ENABLE_RGB_MATRIX_NONE
+// #   define ENABLE_RGB_MATRIX_SOLID_COLOR
+#    define ENABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS
+#    define ENABLE_RGB_MATRIX_TYPING_HEATMAP
 // #    define ENABLE_RGB_MATRIX_RAINBOW_PINWHEELS
 // #    define ENABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT
 
