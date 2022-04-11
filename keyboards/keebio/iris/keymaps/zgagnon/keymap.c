@@ -5,6 +5,7 @@
 #define _LOWER 3
 #define _RAISE 4
 #define _ADJUST 5
+#define _ANKI 6
 #define _GAME 1
 #define _TTS 2
 
@@ -12,6 +13,7 @@ enum custom_keycodes {
   COLEMAK = SAFE_RANGE,
   GAME,
   TTS,
+  ANKI,
   LOWER,
   RAISE,
   ADJUST
@@ -19,12 +21,14 @@ enum custom_keycodes {
 
 enum dance_moves {
     TD_JET_BRAINS = 0,
-    TD_END_STATEMENT = 1
+    TD_END_STATEMENT = 1,
+    TD_LOWER = 2,
 };
 
 qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_JET_BRAINS] = ACTION_TAP_DANCE_DOUBLE(KC_LALT, LALT(KC_ENTER)),
     [TD_END_STATEMENT] = ACTION_TAP_DANCE_DOUBLE(KC_ENTER, LSFT(LGUI(KC_ENTER))),
+    [TD_LOWER] = ACTION_TAP_DANCE_DOUBLE(KC_RIGHT_BRACKET, LOWER)
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -37,9 +41,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_ESCAPE, KC_A,    KC_R,    KC_S,    KC_T,    KC_D,                               KC_H,    KC_N,    KC_E,    KC_I,    KC_O, KC_MINUS,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_ENTER	, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   RGB_TOG ,          TD(TD_END_STATEMENT),  KC_K,    KC_M,    KC_COMMA, KC_DOT, KC_SEMICOLON , LOWER,
+     KC_LBRC	, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   RGB_TOG ,         KC_LCTRL ,  KC_K,    KC_M,    KC_COMMA, KC_DOT, KC_SEMICOLON , LOWER,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    KC_LGUI, KC_LSFT, KC_BSPC,            KC_SPC,  KC_LCTRL,   TD(TD_JET_BRAINS)
+                                    KC_LGUI, KC_LSFT, KC_BSPC,                TD(TD_END_STATEMENT), KC_SPC,   TD(TD_JET_BRAINS)
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
@@ -47,11 +51,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      KC_F12, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                                KC_F6,  KC_F7,    KC_F8,   KC_F9,   KC_F10, KC_F11,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     RESET,   RGB_TOG,    RGB_MOD,    RGB_HUI,    RGB_MODE_PLAIN,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
+      _______,RGB_TOG, RGB_MOD, RGB_HUI, RGB_MODE_PLAIN,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_DEL,  _______, KC_LEFT, KC_RGHT, KC_UP,   KC_LBRC,                            KC_RBRC, LGUI(LALT(KC_LEFT)),   LGUI(LALT(KC_RIGHT)),   KC_P6,   KC_PLUS, KC_PIPE,
+     KC_DEL,  _______, KC_LEFT, KC_RGHT, KC_UP,   KC_LBRC,                            KC_RBRC, LGUI(LALT(KC_LEFT)),   LGUI(LALT(KC_RIGHT)),   KC_P6,   KC_PLUS, KC_BACKSLASH,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     RGB_MOD, KC_LEFT_BRACKET, KC_RIGHT_BRACKET, _______, KC_DOWN, KC_LCBR, KC_LPRN,  KC_RPRN, KC_RCBR, KC_P1,   KC_P2,   KC_P3,   LGUI(KC_F2), _______,
+     KC_RBRC, _______, _______, _______, KC_DOWN, KC_LCBR, RESET,             LGUI(LCTL(KC_A)),KC_RCBR, KC_P1,   KC_P2,   KC_P3,   LGUI(KC_F2), _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     _______, _______, KC_DEL,                    KC_DEL,  LALT(KC_UP), KC_LALT
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -78,6 +82,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      _______, _______, KC_Q,    KC_W,       KC_E   ,  KC_R ,                            KC_G, _______, _______, _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, KC_LCTRL, KC_A,    KC_S,     KC_D,    KC_F,                            _______, _______, _______, _______, _______, _______,
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+     KC_T,    KC_LSFT, KC_X,     KC_C,    KC_V,    KC_B,    _______,          _______, _______, _______, _______, _______, _______, _______,
+  //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
+                                    _______, KC_SPC, KC_ENT,                   _______, _______, _______
+                                // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
+  ),
+
+  [_ANKI] = LAYOUT(
+  //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
+     _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
+     _______, _______, KC_Q,    KC_W,       KC_E   ,  KC_R ,                            KC_G, _______, _______, _______, _______, _______,
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
+     _______, KC_LCTRL, KC_A,    KC_S,     KC_1,    KC_3,                            _______, _______, _______, _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_T,    KC_LSFT, KC_X,     KC_C,    KC_V,    KC_B,    _______,          _______, _______, _______, _______, _______, _______, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
@@ -197,6 +215,13 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
      if (index == 0) {
+         if (IS_LAYER_ON(_LOWER)) {
+            if (clockwise) {
+                tap_code(KC_VOLU);
+            } else {
+                tap_code(KC_VOLD);
+            }
+        } else {
         if(!timer_running){
           current_mode = rgb_matrix_get_mode();
           game_timer = timer_read32();
@@ -224,7 +249,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             } else {
                 layer_tracker = _COLEMAK;
             }
-        }
+        }}
     }
     else if (index == 1) {
         if (clockwise) {
