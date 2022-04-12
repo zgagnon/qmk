@@ -19,10 +19,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xCB10
-#define PRODUCT_ID      0x6256
-#define DEVICE_VER      0x0600
 #define MANUFACTURER    Keebio
-#define PRODUCT         Iris Rev. 6
+// #define PRODUCT         Iris Rev. 6.1
 
 /* key matrix size */
 // Rows are doubled-up
@@ -36,12 +34,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_COL_PINS_RIGHT { D4, D6, D7, C7, F1, F4 }
 #define SPLIT_HAND_PIN D5
 
-#define ENCODERS_PAD_A { B2 }
-#define ENCODERS_PAD_B { B3 }
-#define ENCODERS_PAD_A_RIGHT { B2 }
-#define ENCODERS_PAD_B_RIGHT { B3 }
-#define ENCODER_DIRECTION_FLIP
-
+// #define ENCODERS_PAD_A { B2 }
+// #define ENCODERS_PAD_B { B3 }
+// #define ENCODERS_PAD_A_RIGHT { B2 }
+// #define ENCODERS_PAD_B_RIGHT { B3 }
+// #define ENCODER_DIRECTION_FLIP
 
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION COL2ROW

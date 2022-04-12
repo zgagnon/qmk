@@ -5,11 +5,11 @@ RGB_MATRIX_EFFECT(layer_indicator_effect)
 static bool layer_indicator_effect(effect_params_t* params) {
     RGB_MATRIX_USE_LIMITS(led_min, led_max);
     uint16_t active_layer = get_highest_layer(layer_state) + 1;
-    for(uint16_t i = 0; i < 35; i++){
+    for(uint16_t i = 0; i < 6; i++){
         if(i > 0 && i <= active_layer) {
             rgb_matrix_set_color(i, RGB_BLUE);
         } else {
-            rgb_matrix_set_color(i, RGB_OFF);
+            rgb_matrix_set_color(i, RGB_GOLDENROD);
         }
     }
     // for(uint16_t i = led_min + 1; i < active_layer; i++){
