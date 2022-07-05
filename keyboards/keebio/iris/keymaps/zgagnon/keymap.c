@@ -89,11 +89,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      KC_F12, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                                KC_F6,  KC_F7,    KC_F8,   KC_F9,   KC_F10, KC_F11,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-      _______,RGB_TOG, RGB_MOD, RGB_HUI, RGB_MODE_PLAIN,    KC_5,                     KC_6,    LGUI(LCTL(KC_LEFT)),    LGUI(LCTL(KC_RIGHT)),    KC_9,    KC_0,    _______,
+      _______,RGB_TOG, RGB_MOD, KC_UP, RGB_MODE_PLAIN,    KC_5,                     KC_6,    LGUI(LCTL(KC_LEFT)),    LGUI(LCTL(KC_RIGHT)),    KC_9,    KC_0,    _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_DEL,  _______, KC_LEFT, KC_RGHT, KC_UP,   KC_LBRC,                            KC_RBRC, LGUI(LALT(KC_LEFT)),   LGUI(LALT(KC_RIGHT)),   KC_P6,   KC_PLUS, KC_BACKSLASH,
+     KC_DEL,  _______, KC_LEFT, KC_DOWN, KC_RGHT,   KC_LBRC,                            KC_RBRC, LGUI(LALT(KC_LEFT)),   LGUI(LALT(KC_RIGHT)),   KC_P6,   KC_PLUS, KC_BACKSLASH,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_RBRC, _______, _______, _______, KC_DOWN, KC_LCBR, RESET,             LGUI(LCTL(KC_A)),KC_RCBR, LGUI(LCTL(LSFT(KC_LEFT))),  LGUI(LCTL(LSFT(KC_RIGHT))),   KC_P3,   LGUI(KC_F2), _______,
+     KC_RBRC, _______, _______, _______, _______, KC_LCBR, RESET,             LGUI(LCTL(KC_A)),KC_RCBR, LGUI(LCTL(LSFT(KC_LEFT))),  LGUI(LCTL(LSFT(KC_RIGHT))),   KC_P3,   LGUI(KC_F2), _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     _______, _______, KC_DEL,                    KC_DEL,  LALT(KC_UP), KC_LALT
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
